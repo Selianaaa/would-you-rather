@@ -1,0 +1,31 @@
+@use 'variables' as *;
+
+/* ============= flex ============= */
+@mixin baseColumn($align-items: center) {
+  display: flex;
+  flex-direction: column;
+  align-items: $align-items;
+}
+
+@mixin baseRow($justify-content: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: center;
+}
+
+/* ============= text ============= */
+
+@mixin baseText($font-size: 16px, $font-weight: 400) {
+  font-style: normal;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+}
+
+/* ============= adaptive ============= */
+
+@mixin mobileScreen {
+  @media (max-width: $mobile_width) {
+    @content;
+  }
+}

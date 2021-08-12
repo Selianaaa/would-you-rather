@@ -1,0 +1,32 @@
+// screen
+$mobile_width: 620px;
+
+// colors
+$primaryColors: (
+  'main': #b388ff,
+  'light': #e7b9ff,
+  'dark': #6a3cc7,
+);
+
+$secondaryColors: (
+  'main': #c2185b,
+  'light': #f54b7e,
+  'dark': #8c0032,
+);
+
+$shadow: (
+  1: 0 4px 6px rgba(0, 0, 0, 0.23),
+  3: 0 3px 6px rgba(0, 0, 0, 0.356),
+);
+
+@function primaryColor($key) {
+  @return map-get($map: $primaryColors, $key: $key);
+}
+
+@function secondaryColor($key) {
+  @return map-get($map: $secondaryColors, $key: $key);
+}
+
+@function shadow($key) {
+  @return map-get($map: $shadow, $key: $key);
+}
