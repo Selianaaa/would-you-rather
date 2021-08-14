@@ -7,12 +7,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.spinner {
-  position: relative;
-  max-height: 57px;
-  animation: spin 1.5s infinite linear;
+  &__spinner {
+    position: relative;
+    max-height: 57px;
+    animation: spin 1.5s infinite linear;
+  }
 }
 
 @keyframes spin {

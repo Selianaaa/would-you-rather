@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { usersActions } from '../../store';
@@ -24,14 +24,16 @@ export const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
       />
 
       {menuLinks.map((link) => (
-        <Link
+        <NavLink
           key={link.route}
           to={link.route}
+          exact
           onClick={closeMenu}
           className="side_menu__mobile_link"
+          activeClassName="side_menu__mobile_link__active"
         >
           {link.title}
-        </Link>
+        </NavLink>
       ))}
 
       <div className="side_menu__btn" onClick={() => logout(history)}>

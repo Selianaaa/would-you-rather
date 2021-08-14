@@ -9,10 +9,18 @@ const _HomePage = ({ userLogged }) => {
     return <Redirect to={'/authorization'} />;
   }
 
-  return <Fragment>Home page</Fragment>;
+  return (
+    <div className="home_page">
+      <div> Home page</div>
+      <div></div>
+    </div>
+  );
 };
 
-const mapStateToProps = ({ users }) => ({ userLogged: users.logged });
+const mapStateToProps = ({ users }) => ({
+  userLogged: users.logged,
+  userData: users.logged_user,
+});
 
 const HomePage = connect(mapStateToProps, null)(_HomePage);
 

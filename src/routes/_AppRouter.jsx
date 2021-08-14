@@ -10,7 +10,6 @@ const LeaderboardPage = React.lazy(() => import('../pages/LeaderboardPage'));
 const AuthorizationPage = React.lazy(() =>
   import('../pages/AuthorizationPage')
 );
-
 const NotFoundPage = React.lazy(() => import('../pages/NotFoundPage'));
 
 export default function () {

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { SideMenu } from './_SideMenu';
@@ -23,9 +23,15 @@ export const _Navbar = ({ loggedUser, userIsLogged }) => {
           </Link>
           <div className="navbar__links">
             {menuLinks.map((link) => (
-              <Link key={link.route} to={link.route} className="navbar__link">
+              <NavLink
+                key={link.route}
+                to={link.route}
+                exact
+                className="navbar__link"
+                activeClassName="navbar__link__active"
+              >
                 {link.title}
-              </Link>
+              </NavLink>
             ))}
           </div>
         </Fragment>

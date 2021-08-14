@@ -1,12 +1,6 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
-// .home_preloader {
-//   position: relative;
-//   height: calc(100vh - 200px);
-//   width: 67px;
-// }
-
 .page_content {
   position: relative;
   @include baseColumn;

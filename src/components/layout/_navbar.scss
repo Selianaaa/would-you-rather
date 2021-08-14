@@ -34,10 +34,12 @@
   }
 
   &__link {
+    position: relative;
     text-decoration: none;
     @include baseText(16px, 700);
     color: white;
     cursor: pointer;
+    padding-bottom: 5px;
 
     &:not(:first-child) {
       margin-left: 25px;
@@ -45,6 +47,18 @@
 
     &:hover {
       color: secondaryColor('light');
+    }
+
+    &__active {
+      &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0 !important;
+        width: 100%;
+        height: 3px;
+        background: white;
+      }
     }
   }
 }

@@ -35,6 +35,10 @@
     color: white;
     cursor: pointer;
   }
+
+  &__active {
+    color: secondaryColor('light');
+  }
 }
 
 .side_menu__close_btn {
