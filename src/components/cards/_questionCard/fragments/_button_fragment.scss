@@ -11,8 +11,10 @@
     background: secondaryColor('light');
     cursor: pointer;
     border-radius: 3px;
+    @include baseRow;
     @include baseText(18px);
     color: white;
+    text-decoration: none;
 
     &:hover {
       background: secondaryColor('main');

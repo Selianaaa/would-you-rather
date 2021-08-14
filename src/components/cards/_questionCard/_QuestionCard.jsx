@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 
 import { usersActions } from '../../../store';
 import { ContentFragment, ButtonFragment } from './fragments';
@@ -24,10 +23,12 @@ const _QuestionCard = ({
     {
       id: 'optionOne',
       text: optionOne.text,
+      votes: optionOne.votes,
     },
     {
       id: 'optionTwo',
       text: optionTwo.text,
+      votes: optionTwo.votes,
     },
   ];
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -50,18 +51,21 @@ const _QuestionCard = ({
       )}
 
       <div className="question_card__content">
-        <div className="question_card__content__title">Would You Rather:</div>
+        <div className="question_card__content__title">Would You Rather</div>
 
         <ContentFragment
           mode={mode}
           possibleAnswers={possibleAnswers}
           selectedAnswer={selectedAnswer}
+          loggedUserAnswered={loggedUserAnswered}
           setSelectedAnswer={(answerId) => setSelectedAnswer(answerId)}
         />
         <ButtonFragment
           mode={mode}
           loggedUserAnswered={loggedUserAnswered}
           selectedAnswer={selectedAnswer}
+          handleSubmit={() => console.log('handleSubmit')}
+          questionId={id}
         />
       </div>
     </div>

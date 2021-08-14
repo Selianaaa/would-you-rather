@@ -12,8 +12,6 @@ const _HomePage = ({
   usersRequest,
   questionRequest,
 }) => {
-  const [tab, setTab] = useState(null);
-
   const dashboardTabs = useMemo(() => {
     const tabs = [
       {
@@ -39,6 +37,8 @@ const _HomePage = ({
 
     return tabs;
   }, [questions, userData]);
+
+  const [tab, setTab] = useState(dashboardTabs[0]);
 
   useEffect(() => {
     if (userData && questions.length > 0) {
@@ -74,9 +74,9 @@ const _HomePage = ({
         {tab.questions.map((question) => (
           <QuestionCard
             key={question.id}
+            className="home_page__question_card"
             question={question}
             mode="preview"
-            className="home_page__question_card"
           />
         ))}
       </div>
