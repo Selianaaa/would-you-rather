@@ -8,6 +8,7 @@ export const ContentFragment = ({
   selectedAnswer,
   setSelectedAnswer,
   loggedUserAnswered,
+  loggedUserId,
 }) => {
   const answersAmount = () => {
     let amount = 0;
@@ -18,6 +19,8 @@ export const ContentFragment = ({
     return amount;
   };
 
+  const userVoted = (votes) => votes.includes(loggedUserId);
+
   const votesPercentage = (votesAmount) =>
     (votesAmount * 100) / answersAmount();
 
@@ -27,13 +30,25 @@ export const ContentFragment = ({
     );
   }
 
+  console.log(possibleAnswers, loggedUserId);
+
   if (loggedUserAnswered) {
     return (
       <div className="result">
         <div className="result__title">Result:</div>
         <div className="result__stats">
           {possibleAnswers.map((answer) => (
-            <div className="result__stat" key={answer.id}>
+            <div
+              className={`result__stat ${
+                userVoted(answer.votes) ? 'result__stat__users_vote' : ''
+              }`}
+              key={answer.id}
+            >
+              {userVoted(answer.votes) && (
+                <div className="user_voted">
+                  <div>Your Vote</div>
+                </div>
+              )}
               <div className="result__name">{answer.text}</div>
               <div className="result__bar">
                 <p className="result__bar__percentage">{`${votesPercentage(

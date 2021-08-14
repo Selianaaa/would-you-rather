@@ -25,13 +25,14 @@ const _HomePage = ({
     ];
 
     if (userData && questions.length > 0) {
-      console.log('true');
+      const userAnswers = Object.keys(userData.answers);
+
       tabs[0].questions = questions.filter((question) =>
-        userData.questions.includes(question.id)
+        userAnswers.includes(question.id)
       );
 
       tabs[1].questions = questions.filter(
-        (question) => !userData.questions.includes(question.id)
+        (question) => !userAnswers.includes(question.id)
       );
     }
 
@@ -41,10 +42,10 @@ const _HomePage = ({
   const [tab, setTab] = useState(dashboardTabs[0]);
 
   useEffect(() => {
-    if (userData && questions.length > 0) {
+    if (userData && questions.length > 0 && dashboardTabs) {
       setTab(dashboardTabs[0]);
     }
-  }, [questions, userData]);
+  }, [questions, userData, dashboardTabs]);
 
   if (!userLogged) {
     return <Redirect to={'/authorization'} />;

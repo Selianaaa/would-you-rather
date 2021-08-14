@@ -17,7 +17,11 @@ const _QuestionCard = ({
   const { optionOne, optionTwo, author, id } = question;
   const questionAuthor = users.find((user) => user.id === author);
 
-  const loggedUserAnswered = loggedUser.questions.includes(question.id);
+  const loggedUserAnswered = () => {
+    const userAnswers = Object.keys(loggedUser.answers);
+
+    return userAnswers.includes(question.id);
+  };
 
   const possibleAnswers = [
     {
@@ -57,12 +61,13 @@ const _QuestionCard = ({
           mode={mode}
           possibleAnswers={possibleAnswers}
           selectedAnswer={selectedAnswer}
-          loggedUserAnswered={loggedUserAnswered}
+          loggedUserAnswered={loggedUserAnswered()}
           setSelectedAnswer={(answerId) => setSelectedAnswer(answerId)}
+          loggedUserId={loggedUser.id}
         />
         <ButtonFragment
           mode={mode}
-          loggedUserAnswered={loggedUserAnswered}
+          loggedUserAnswered={loggedUserAnswered()}
           selectedAnswer={selectedAnswer}
           handleSubmit={() => console.log('handleSubmit')}
           questionId={id}
