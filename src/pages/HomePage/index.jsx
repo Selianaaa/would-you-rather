@@ -13,7 +13,7 @@ const _HomePage = ({ userLogged }) => {
   return <Fragment>Home page</Fragment>;
 };
 
-const mapStateToProps = ({ user }) => ({ userLogged: user.logged });
+const mapStateToProps = ({ users }) => ({ userLogged: users.logged });
 
 const HomePage = connect(mapStateToProps, null)(_HomePage);
 

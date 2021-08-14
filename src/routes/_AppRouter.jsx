@@ -11,6 +11,8 @@ const AuthorizationPage = React.lazy(() =>
   import('../pages/AuthorizationPage')
 );
 
+const NotFoundPage = React.lazy(() => import('../pages/NotFoundPage'));
+
 export default function () {
   return (
     <Router>
@@ -25,6 +27,7 @@ export default function () {
               <Route path="/questions/:id" component={QuestionPage} />
               <Route path="/add" component={AddPage} />
               <Route path="/authorization" component={AuthorizationPage} />
+              <Route path="*" component={NotFoundPage} />
             </Switch>
           </Suspense>
         </div>

@@ -1,4 +1,4 @@
-const users = [
+let users = [
   {
     id: 'sarahedo',
     name: 'Sarah Edo',
@@ -34,7 +34,7 @@ const users = [
   },
 ];
 
-const questions = [
+let questions = [
   {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
@@ -115,6 +115,18 @@ const questions = [
   },
 ];
 
+export function _getUsers() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res(users), 1000);
+  });
+}
+
+export function _getQuestions() {
+  return new Promise((res, rej) => {
+    setTimeout(() => res(questions), 1000);
+  });
+}
+
 function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
@@ -122,30 +134,18 @@ function generateUID() {
   );
 }
 
-export function _getUsers() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...users }), 1000);
-  });
-}
-
-export function _getQuestions() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...questions }), 1000);
-  });
-}
-
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOne, optionTwo, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: optionOne,
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: optionTwo,
     },
   };
 }
@@ -174,7 +174,7 @@ export function _saveQuestion(question) {
   });
 }
 
-export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qId, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -183,23 +183,23 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer,
+            [qId]: answer,
           },
         },
       };
 
       questions = {
         ...questions,
-        [qid]: {
-          ...questions[qid],
+        [qId]: {
+          ...questions[qId],
           [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser]),
+            ...questions[qId][answer],
+            votes: questions[qId][answer].votes.concat([authedUser]),
           },
         },
       };
 
-      res();
+      res({ users, questions });
     }, 500);
   });
 }
