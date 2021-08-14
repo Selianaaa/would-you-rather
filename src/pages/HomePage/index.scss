@@ -7,7 +7,7 @@
   align-items: flex-start;
 
   &__title {
-    @include baseText(22px);
+    @include baseText(24px);
     align-self: center;
   }
 
@@ -16,6 +16,10 @@
     margin-top: 30px;
     width: 500px;
     @include baseRow;
+
+    @include mobileScreen {
+      width: 90vw;
+    }
   }
 
   &__tab {
@@ -24,6 +28,8 @@
     width: 50%;
     border: 1px solid secondaryColor('light');
     @include baseRow;
+    @include baseText(18px, 600);
+    color: secondaryColor('light');
     cursor: pointer;
 
     &:not(:first-child) {
