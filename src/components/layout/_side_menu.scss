@@ -68,28 +68,3 @@
     }
   }
 }
-
-.side_menu__user {
-  position: relative;
-  @include baseRow;
-  margin-top: 30px;
-
-  &__avatar {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background-size: cover;
-    background-position: 40% 40%;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    border: 1px solid white;
-    transition: 0.1s;
-  }
-
-  &__name {
-    margin-left: 10px;
-    @include baseText(16px, 700);
-    color: white;
-    transition: 0.1s;
-  }
-}

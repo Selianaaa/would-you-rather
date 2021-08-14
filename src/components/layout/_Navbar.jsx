@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { SideMenu } from './_SideMenu';
 import { MenuUser } from './_MenuUser';
-import { Preloader } from '../../components';
+import { menuLinks } from '../../constants';
 import { usersActions } from '../../store';
 
 import './_navbar.scss';
@@ -16,9 +16,25 @@ export const _Navbar = ({ loggedUser, userIsLogged }) => {
 
   return (
     <div className="navbar">
-      <Link className="navbar__title" to="/">
-        Would You Rather?
-      </Link>
+      {userIsLogged ? (
+        <Fragment>
+          <Link className="navbar__title__logged" to="/">
+            Would You Rather?
+          </Link>
+          <div className="navbar__links">
+            {menuLinks.map((link) => (
+              <Link key={link.route} to={link.route} className="navbar__link">
+                {link.title}
+              </Link>
+            ))}
+          </div>
+        </Fragment>
+      ) : (
+        <Link className="navbar__title" to="/">
+          Would You Rather?
+        </Link>
+      )}
+
       {userIsLogged && (
         <MenuUser
           isButton

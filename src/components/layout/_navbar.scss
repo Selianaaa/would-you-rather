@@ -14,14 +14,47 @@
     @include baseText(20px, 700);
     color: white;
     text-decoration: none;
+    text-align: left;
 
     @include mobileScreen {
       font-size: 17px;
-      text-align: left;
     }
 
     &:hover {
       color: secondaryColor('light');
     }
+  }
+
+  &__links {
+    @include baseRow;
+
+    @include mobileScreen {
+      display: none;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    @include baseText(16px, 700);
+    color: white;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      margin-left: 25px;
+    }
+
+    &:hover {
+      color: secondaryColor('light');
+    }
+  }
+}
+
+.navbar__title__logged {
+  @extend .navbar__title;
+  display: none;
+
+  @include mobileScreen {
+    display: block;
+    font-size: 17px;
   }
 }
