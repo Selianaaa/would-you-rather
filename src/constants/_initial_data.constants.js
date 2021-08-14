@@ -1,5 +1,5 @@
-let users = {
-  sarahedo: {
+const users = [
+  {
     id: 'sarahedo',
     name: 'Sarah Edo',
     // avatarURL: ,
@@ -11,7 +11,7 @@ let users = {
     },
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
   },
-  tylermcginnis: {
+  {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
     // avatarURL: ,
@@ -21,7 +21,7 @@ let users = {
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
-  johndoe: {
+  {
     id: 'johndoe',
     name: 'John Doe',
     // avatarURL: ,
@@ -32,10 +32,10 @@ let users = {
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   },
-};
+];
 
-let questions = {
-  '8xf0y6ziyjabvozdd253nd': {
+const questions = [
+  {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     timestamp: 1467166872634,
@@ -48,7 +48,7 @@ let questions = {
       text: 'have horrible long term memory',
     },
   },
-  '6ni6ok3ym7mf1p33lnez': {
+  {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
@@ -61,7 +61,7 @@ let questions = {
       text: 'become a supervillain',
     },
   },
-  am8ehyc8byjqgar0jgpub9: {
+  {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     timestamp: 1488579767190,
@@ -74,7 +74,7 @@ let questions = {
       text: 'be telepathic',
     },
   },
-  loxhs1bqm25b708cmbf3g: {
+  {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
     timestamp: 1482579767190,
@@ -87,7 +87,7 @@ let questions = {
       text: 'be a back-end developer',
     },
   },
-  vthrdm985a262al8qx3do: {
+  {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
     timestamp: 1489579767190,
@@ -100,7 +100,7 @@ let questions = {
       text: 'have your best friend find $500',
     },
   },
-  xj352vofupe1dqz9emx13r: {
+  {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
@@ -113,7 +113,7 @@ let questions = {
       text: 'write Swift',
     },
   },
-};
+];
 
 function generateUID() {
   return (

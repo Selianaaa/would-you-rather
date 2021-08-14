@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import './index.scss';
 
 const LeaderboardPage = () => {
-  return <div className="page">Leaderboard page</div>;
+  return <Fragment>Leaderboard page</Fragment>;
 };
 
 export default LeaderboardPage;

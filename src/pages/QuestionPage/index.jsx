@@ -5,7 +5,7 @@ import './index.scss';
 const QuestionPage = () => {
   const { id } = useParams();
 
-  return <div className="page">{`Question page ${id}`}</div>;
+  return <Fragment>{`Question page ${id}`}</Fragment>;
 };
 
 export default QuestionPage;

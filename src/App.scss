@@ -21,3 +21,18 @@ body {
   position: relative;
   width: 100%;
 }
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  @include baseColumn;
+}
+
+.content {
+  position: relative;
+  padding: 40px 20px 20px 20px;
+  flex: 1;
+  @include baseColumn;
+  width: 100%;
+}
