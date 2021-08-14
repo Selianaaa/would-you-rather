@@ -15,43 +15,13 @@
     color: white;
     text-decoration: none;
 
+    @include mobileScreen {
+      font-size: 17px;
+      text-align: left;
+    }
+
     &:hover {
       color: secondaryColor('light');
-    }
-  }
-
-  &__menu {
-    position: relative;
-    @include baseRow;
-    cursor: pointer;
-
-    &__avatar {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      background-size: cover;
-      background-position: 40% 40%;
-      background-repeat: no-repeat;
-      border-radius: 50%;
-      border: 1px solid white;
-      transition: 0.1s;
-    }
-
-    &__name {
-      margin-left: 10px;
-      @include baseText(16px, 700);
-      color: white;
-      transition: 0.1s;
-    }
-
-    &:hover {
-      .navbar__menu__avatar {
-        border: 1px solid secondaryColor('light');
-      }
-
-      .navbar__menu__name {
-        color: secondaryColor('light');
-      }
     }
   }
 }

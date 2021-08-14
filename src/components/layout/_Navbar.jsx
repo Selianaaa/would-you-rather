@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { SideMenu } from './_SideMenu';
+import { MenuUser } from './_MenuUser';
 import { Preloader } from '../../components';
 import { usersActions } from '../../store';
 
@@ -19,17 +20,13 @@ export const _Navbar = ({ loggedUser, userIsLogged }) => {
         Would You Rather?
       </Link>
       {userIsLogged && (
-        <div className="navbar__menu">
-          <div
-            className="navbar__menu__avatar"
-            style={{
-              backgroundImage: `url(${johndoeAvatar})`,
-            }}
-          ></div>
-          <div className="navbar__menu__name" onClick={() => setOpened(true)}>
-            {loggedUser.name}
-          </div>
-        </div>
+        <MenuUser
+          isButton
+          clickHandler={() => setOpened(true)}
+          name={loggedUser.name}
+          avatar={johndoeAvatar}
+          style={{ marginLeft: '30px' }}
+        />
       )}
 
       {opened && <SideMenu closeMenu={() => setOpened(false)} />}

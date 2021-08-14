@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.menu_user {
+  position: relative;
+  @include baseRow;
+
+  &__avatar {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: 40% 40%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 1px solid white;
+    transition: 0.1s;
+  }
+
+  &__name {
+    margin-left: 10px;
+    @include baseText(16px, 700);
+    color: white;
+    transition: 0.1s;
+  }
+}
+
+.menu_user_btn {
+  @extend .menu_user;
+  cursor: pointer;
+
+  &:hover {
+    .menu_user__avatar {
+      border: 1px solid secondaryColor('light');
+    }
+
+    .menu_user__name {
+      color: secondaryColor('light');
+    }
+  }
+
+  @include mobileScreen {
+    .menu_user__name {
+      display: none;
+    }
+  }
+}

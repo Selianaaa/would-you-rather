@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { usersActions } from '../../store';
+import { MenuUser } from './_MenuUser';
 import { menuLinks } from '../../constants';
 import './_side_menu.scss';
 
@@ -16,15 +17,11 @@ export const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
   return (
     <div className="side_menu">
       <div className="side_menu__close_btn" onClick={closeMenu}></div>
-      <div className="side_menu__user">
-        <div
-          className="side_menu__user__avatar"
-          style={{
-            backgroundImage: `url(${johndoeAvatar})`,
-          }}
-        ></div>
-        <div className="side_menu__user__name">{loggedUser.name}</div>
-      </div>
+      <MenuUser
+        name={loggedUser.name}
+        avatar={johndoeAvatar}
+        style={{ marginTop: '30px' }}
+      />
 
       {menuLinks.map((link) => (
         <Link
