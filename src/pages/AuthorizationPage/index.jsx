@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { Preloader } from '../../components';
 import { usersActions } from '../../store';
-
 import './index.scss';
 
 const _AuthorizationPage = ({ users, usersRequest, userIsLogged, login }) => {

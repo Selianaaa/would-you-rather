@@ -1,15 +1,57 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
-.header {
+.navbar {
   position: relative;
-  padding: 15px 0;
+  padding: 15px 20px;
   height: 70px;
   background: primaryColor('dark');
   text-align: center;
   width: 100%;
-}
+  @include baseRow(space-between);
 
-.title {
-  font-weight: 700;
-  color: white;
+  &__title {
+    @include baseText(20px, 700);
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: secondaryColor('light');
+    }
+  }
+
+  &__menu {
+    position: relative;
+    @include baseRow;
+    cursor: pointer;
+
+    &__avatar {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      background-size: cover;
+      background-position: 40% 40%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      border: 1px solid white;
+      transition: 0.1s;
+    }
+
+    &__name {
+      margin-left: 10px;
+      @include baseText(16px, 700);
+      color: white;
+      transition: 0.1s;
+    }
+
+    &:hover {
+      .navbar__menu__avatar {
+        border: 1px solid secondaryColor('light');
+      }
+
+      .navbar__menu__name {
+        color: secondaryColor('light');
+      }
+    }
+  }
 }

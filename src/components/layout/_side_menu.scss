@@ -1,0 +1,95 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.side_menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 25px 30px 20px 20px;
+  width: 220px;
+  background: primaryColor('dark');
+  @include baseColumn(flex-start);
+  z-index: 100;
+
+  &__btn {
+    @include baseText(16px, 700);
+    color: white;
+    margin-top: 25px;
+    cursor: pointer;
+
+    &:hover {
+      color: secondaryColor('light');
+    }
+  }
+}
+
+.side_menu__mobile_link {
+  display: none;
+
+  @include mobileScreen {
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    margin-top: 30px;
+    @include baseText(16px, 700);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.side_menu__close_btn {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  align-self: flex-end;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    background: white;
+    width: 25px;
+    height: 3px;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      background: secondaryColor('light');
+    }
+  }
+}
+
+.side_menu__user {
+  position: relative;
+  @include baseRow;
+  margin-top: 30px;
+
+  &__avatar {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: 40% 40%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 1px solid white;
+    transition: 0.1s;
+  }
+
+  &__name {
+    margin-left: 10px;
+    @include baseText(16px, 700);
+    color: white;
+    transition: 0.1s;
+  }
+}

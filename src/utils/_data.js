@@ -1,8 +1,10 @@
+// import johndoeAvatar from '../assets/avatars/sarahedo.png';
+
 let users = [
   {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    // avatarURL: ,
+    avatarURL: '../assets/avatars/sarahedo.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -14,7 +16,7 @@ let users = [
   {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    // avatarURL: ,
+    avatarURL: '../assets/avatars/tylermcginnis.png',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -24,7 +26,7 @@ let users = [
   {
     id: 'johndoe',
     name: 'John Doe',
-    // avatarURL: ,
+    avatarURL: '../assets/avatars/johndoe.png',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',
