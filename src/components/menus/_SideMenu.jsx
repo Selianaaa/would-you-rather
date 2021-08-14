@@ -9,7 +9,7 @@ import { MenuUser } from './_MenuUser';
 import { menuLinks } from '../../constants';
 import './_side_menu.scss';
 
-export const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
+const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
   const history = useHistory();
 
   if (!loggedUser) return null;

@@ -11,7 +11,7 @@ import { usersActions } from '../../store';
 
 import './_navbar.scss';
 
-export const _Navbar = ({ loggedUser, userIsLogged }) => {
+const _Navbar = ({ loggedUser, userIsLogged }) => {
   const [opened, setOpened] = useState(false);
 
   return (

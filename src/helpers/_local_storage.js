@@ -1,5 +1,5 @@
-const saveByKey = (key, $value) => {
-  localStorage.setItem(key, JSON.stringify($value));
+const saveByKey = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
 };
 
 const getByKey = (key) => {

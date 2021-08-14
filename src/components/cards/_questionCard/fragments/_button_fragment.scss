@@ -1,0 +1,31 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.question_card__content {
+  &__btn {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    height: 35px;
+    border: none;
+    background: secondaryColor('light');
+    cursor: pointer;
+    border-radius: 3px;
+    @include baseText(18px);
+    color: white;
+
+    &:hover {
+      background: secondaryColor('main');
+    }
+
+    &:active {
+      background: secondaryColor('dark');
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: secondaryColor('light');
+    }
+  }
+}
