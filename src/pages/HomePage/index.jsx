@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { QuestionCard, Preloader } from '../../components';
 import './index.scss';
-
-const tabs = [
-  { title: 'Answered', questions: [] },
-  { title: 'Unanswered', questions: [] },
-];
 
 const _HomePage = ({
   userLogged,
@@ -17,7 +12,39 @@ const _HomePage = ({
   usersRequest,
   questionRequest,
 }) => {
-  const [tab, setTab] = useState(tabs[0]);
+  const [tab, setTab] = useState(null);
+
+  const dashboardTabs = useMemo(() => {
+    const tabs = [
+      {
+        title: 'Answered',
+        questions: [],
+      },
+      {
+        title: 'Unanswered',
+        questions: [],
+      },
+    ];
+
+    if (userData && questions.length > 0) {
+      console.log('true');
+      tabs[0].questions = questions.filter((question) =>
+        userData.questions.includes(question.id)
+      );
+
+      tabs[1].questions = questions.filter(
+        (question) => !userData.questions.includes(question.id)
+      );
+    }
+
+    return tabs;
+  }, [questions, userData]);
+
+  useEffect(() => {
+    if (userData && questions.length > 0) {
+      setTab(dashboardTabs[0]);
+    }
+  }, [questions, userData]);
 
   if (!userLogged) {
     return <Redirect to={'/authorization'} />;
@@ -29,9 +56,29 @@ const _HomePage = ({
 
   return (
     <div className="home_page">
-      <div>Your questions</div>
+      <div className="home_page__title">Your dashboard</div>
       <div className="home_page__selector">
-        <QuestionCard question={questions[0]} mayAnswer />
+        {dashboardTabs.map((dashboardTab) => (
+          <div
+            key={dashboardTab.title}
+            className={`home_page__tab ${
+              dashboardTab.title === tab.title ? 'home_page__active_tab' : ''
+            }`}
+            onClick={() => setTab(dashboardTab)}
+          >
+            {dashboardTab.title}
+          </div>
+        ))}
+      </div>
+      <div className="home_page__questions">
+        {tab.questions.map((question) => (
+          <QuestionCard
+            key={question.id}
+            question={question}
+            mode="preview"
+            className="home_page__question_card"
+          />
+        ))}
       </div>
     </div>
   );

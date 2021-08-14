@@ -1,12 +1,59 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .home_page {
   position: relative;
   @include baseColumn(flex-start);
+  align-items: flex-start;
+
+  &__title {
+    @include baseText(22px);
+    align-self: center;
+  }
 
   &__selector {
     position: relative;
     margin-top: 30px;
-    // border: 1px solid red;
+    width: 500px;
+    @include baseRow;
   }
+
+  &__tab {
+    position: relative;
+    height: 40px;
+    width: 50%;
+    border: 1px solid secondaryColor('light');
+    @include baseRow;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:hover {
+      background: secondaryColor('light');
+      color: white;
+    }
+  }
+
+  &__questions {
+    position: relative;
+    margin-top: 30px;
+  }
+
+  &__question_card {
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.home_page__active_tab {
+  background: secondaryColor('main');
+  border: 1px solid secondaryColor('main');
+  color: white;
 }

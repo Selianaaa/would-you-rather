@@ -8,7 +8,13 @@ import { ContentFragment, ButtonFragment } from './fragments';
 import johndoeAvatar from '../../../assets/avatars/sarahedo.png';
 import './_question_card.scss';
 
-const _QuestionCard = ({ mode = 'full', users, question, loggedUser }) => {
+const _QuestionCard = ({
+  mode = 'full',
+  users,
+  question,
+  loggedUser,
+  className = '',
+}) => {
   const { optionOne, optionTwo, author, id } = question;
   const questionAuthor = users.find((user) => user.id === author);
 
@@ -27,7 +33,7 @@ const _QuestionCard = ({ mode = 'full', users, question, loggedUser }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
 
   return (
-    <div className="question_card">
+    <div className={`question_card ${className}`}>
       {questionAuthor && (
         <div className="question_card__author">
           <div className="question_card__author__name">

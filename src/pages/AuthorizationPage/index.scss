@@ -4,43 +4,44 @@
 .page_content {
   position: relative;
   @include baseColumn;
-}
+  align-self: center;
 
-.page_title {
-  @include baseText(24px);
-}
+  &__title {
+    @include baseText(24px);
+  }
 
-.subtitle {
-  margin-top: 10px;
-  @include baseText(20px);
-}
+  &__subtitle {
+    margin-top: 10px;
+    @include baseText(20px);
+  }
 
-.login_form {
-  position: relative;
-  width: 300px;
-  height: 200px;
-  margin-top: 25px;
-  border-radius: 10px;
-}
+  &__login_form {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin-top: 25px;
+    border-radius: 10px;
+  }
 
-.select_user {
-  width: 100%;
-  height: 30px;
-}
+  &__select_user {
+    width: 100%;
+    height: 30px;
+  }
 
-.authorization_btn {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  height: 40px;
-  border: none;
-  background: secondaryColor('light');
-  cursor: pointer;
-  border-radius: 3px;
-  @include baseText(16px);
-  color: white;
+  &__authorization_btn {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: secondaryColor('light');
+    cursor: pointer;
+    border-radius: 3px;
+    @include baseText(16px);
+    color: white;
 
-  &:hover {
-    background: secondaryColor('main');
+    &:hover {
+      background: secondaryColor('main');
+    }
   }
 }

@@ -31,11 +31,11 @@ const _AuthorizationPage = ({ users, usersRequest, userIsLogged, login }) => {
 
   return (
     <div className="page_content">
-      <div className="page_title">Authorization</div>
-      <div className="subtitle">To continue please login</div>
-      <div className="login_form">
+      <div className="page_content__page_title">Authorization</div>
+      <div className="page_content__subtitle">To continue please login</div>
+      <div className="page_content__login_form">
         <select
-          className="select_user"
+          className="page_content__select_user"
           value={userName}
           onChange={(e) => {
             setUserName(e.target.value);
@@ -48,7 +48,7 @@ const _AuthorizationPage = ({ users, usersRequest, userIsLogged, login }) => {
           ))}
         </select>
         <button
-          className="authorization_btn"
+          className="page_content__authorization_btn"
           onClick={() => loginUser(userName)}
         >
           Login
