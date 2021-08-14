@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import './index.scss';
 
 const _HomePage = ({ userLogged }) => {
-  console.log(userLogged);
   if (!userLogged) {
     return <Redirect to={'/authorization'} />;
   }

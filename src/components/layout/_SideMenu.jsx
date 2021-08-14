@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { usersActions } from '../../store';
@@ -9,6 +9,8 @@ import { menuLinks } from '../../constants';
 import './_side_menu.scss';
 
 export const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
+  const history = useHistory();
+
   if (!loggedUser) return null;
 
   return (
@@ -35,7 +37,7 @@ export const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
         </Link>
       ))}
 
-      <div className="side_menu__btn" onClick={logout}>
+      <div className="side_menu__btn" onClick={() => logout(history)}>
         Logout
       </div>
     </div>

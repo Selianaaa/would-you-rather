@@ -57,8 +57,9 @@ export const login = (userData) => {
 /**
  * Logout user
  */
-export const logout = () => {
+export const logout = (history) => {
   return (dispatch) => {
+    history.push('/');
     dispatch({
       type: usersConstants.LOGOUT_USER,
     });
