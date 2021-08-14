@@ -1,5 +1,6 @@
 import { usersConstants } from '../../constants';
-import { _getUsers } from '../../utils';
+import { _getUsers, _saveQuestionAnswer } from '../../utils';
+import { questionsActions } from '../actions';
 
 /**
  * Setting users request condition
@@ -45,7 +46,7 @@ export const getUsers = () => {
  * Setting logged user
  * @param {Object} userData - logged user
  */
-export const login = (userData) => {
+export const setLoggedUser = (userData) => {
   return (dispatch) => {
     dispatch({
       type: usersConstants.SET_LOGGED_USER,
@@ -63,5 +64,46 @@ export const logout = (history) => {
     dispatch({
       type: usersConstants.LOGOUT_USER,
     });
+  };
+};
+
+/**
+ * Setting saving answer condition
+ * @param {boolean} inRequest - saving condition
+ */
+const setSavingAnswer = (inRequest) => ({
+  type: usersConstants.SET_SAVING_ANSWER,
+  payload: inRequest,
+});
+
+/**
+ * Save user answer to the question
+ */
+export const saveUserAnswer = (questionId, answerOption) => {
+  return async (dispatch, getState) => {
+    const { logged_user: loggedUser } = getState().users;
+
+    dispatch(setSavingAnswer(true));
+
+    const newUserData = {
+      ...loggedUser,
+      answers: {
+        ...loggedUser.answers,
+        [questionId]: answerOption,
+      },
+    };
+
+    console.log(newUserData);
+
+    dispatch(setLoggedUser(newUserData));
+    dispatch(
+      questionsActions.saveQuestionAnswer(
+        questionId,
+        answerOption,
+        loggedUser.id
+      )
+    );
+
+    dispatch(setSavingAnswer(false));
   };
 };

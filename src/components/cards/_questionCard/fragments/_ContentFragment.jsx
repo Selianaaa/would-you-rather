@@ -22,7 +22,7 @@ export const ContentFragment = ({
   const userVoted = (votes) => votes.includes(loggedUserId);
 
   const votesPercentage = (votesAmount) =>
-    (votesAmount * 100) / answersAmount();
+    Math.round((votesAmount * 100) / answersAmount());
 
   if (mode === 'preview') {
     return (
@@ -80,8 +80,8 @@ export const ContentFragment = ({
           <input
             type="radio"
             value={answer.id}
-            checked={answer.id === selectedAnswer}
-            onChange={() => setSelectedAnswer(answer.id)}
+            checked={answer.id === selectedAnswer.id}
+            onChange={() => setSelectedAnswer(answer)}
           />
 
           <p className="question_card__content__value">{answer.text}</p>

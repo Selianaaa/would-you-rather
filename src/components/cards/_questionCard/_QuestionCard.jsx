@@ -12,6 +12,7 @@ const _QuestionCard = ({
   users,
   question,
   loggedUser,
+  saveUserAnswer,
   className = '',
 }) => {
   const { optionOne, optionTwo, author, id } = question;
@@ -62,28 +63,33 @@ const _QuestionCard = ({
           possibleAnswers={possibleAnswers}
           selectedAnswer={selectedAnswer}
           loggedUserAnswered={loggedUserAnswered()}
-          setSelectedAnswer={(answerId) => setSelectedAnswer(answerId)}
+          setSelectedAnswer={(answer) => setSelectedAnswer(answer)}
           loggedUserId={loggedUser.id}
         />
         <ButtonFragment
           mode={mode}
           loggedUserAnswered={loggedUserAnswered()}
           selectedAnswer={selectedAnswer}
-          handleSubmit={() => console.log('handleSubmit')}
+          // handleSubmit={() => console.log(id, selectedAnswer)}
+          handleSubmit={() => saveUserAnswer(id, selectedAnswer.id)}
           questionId={id}
         />
       </div>
     </div>
   );
 };
+// saveUserAnswer
 
 const mapStateToProps = ({ users }) => ({
   users: users.users,
   loggedUser: users.logged_user,
 });
 
-// const mapDispatchtoProps = (dispatch) => ({
-//   ...bindActionCreators(usersActions, dispatch),
-// });
+const mapDispatchtoProps = (dispatch) => ({
+  ...bindActionCreators(usersActions, dispatch),
+});
 
-export const QuestionCard = connect(mapStateToProps, null)(_QuestionCard);
+export const QuestionCard = connect(
+  mapStateToProps,
+  mapDispatchtoProps
+)(_QuestionCard);

@@ -7,6 +7,8 @@ const initialState = {
 
   logged_user: JSON.parse(localStorage.getItem('loggedUser')) || null,
   logged: JSON.parse(localStorage.getItem('logged')) || false,
+
+  saving_answer: false,
 };
 
 export const usersReducer = function (
@@ -46,6 +48,12 @@ export const usersReducer = function (
         ...state,
         logged_user: null,
         logged: false,
+      };
+
+    case usersConstants.SAVING_ANSWER:
+      return {
+        ...state,
+        saving_answer: payload,
       };
     default:
       return state;

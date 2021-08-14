@@ -1,5 +1,5 @@
 import { questionsConstants } from '../../constants';
-import { _getQuestions } from '../../utils';
+import { _getQuestions, _saveQuestionAnswer } from '../../utils';
 
 /**
  * Setting questions request condition
@@ -38,6 +38,35 @@ export const getQuestions = () => {
     }
 
     dispatch(setQuestionsRequest(false));
+  };
+};
+
+/**
+ * Save answer to the question
+ */
+export const saveQuestionAnswer = (questionId, answerOption, userId) => {
+  return async (dispatch, getState) => {
+    const { questions } = getState().questions;
+
+    const newQuestions = questions.slice();
+
+    const question = newQuestions.find(
+      (question) => question.id === questionId
+    );
+
+    if (question) {
+      question[answerOption].votes.push(userId);
+    }
+
+    dispatch(setQuestions(newQuestions));
+
+    return _saveQuestionAnswer({
+      authedUser: userId,
+      qId: questionId,
+      answer: answerOption,
+    }).catch((e) => {
+      console.warn('Error in handleSaveQuestionAnswer:', e);
+    });
   };
 };
 

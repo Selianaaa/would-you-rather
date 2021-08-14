@@ -163,13 +163,18 @@ export function _saveQuestion(question) {
         [formattedQuestion.id]: formattedQuestion,
       };
 
-      users = {
-        ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id]),
-        },
-      };
+      const newQuestions = questions.slice();
+      newQuestions.push(formattedQuestion);
+      questions = newQuestions;
+
+      const newUsers = users.slice();
+      const user = newUsers.find((user) => user.id === authedUser.id);
+
+      if (user) {
+        user.questions.push(formattedQuestion.id);
+      }
+
+      users = newUsers;
 
       res(formattedQuestion);
     }, 1000);
@@ -178,28 +183,25 @@ export function _saveQuestion(question) {
 
 export function _saveQuestionAnswer({ authedUser, qId, answer }) {
   return new Promise((res, rej) => {
+    console.log('_saveQuestionAnswer', authedUser, qId, answer);
     setTimeout(() => {
-      users = {
-        ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          answers: {
-            ...users[authedUser].answers,
-            [qId]: answer,
-          },
-        },
-      };
+      const newUsers = users.slice();
+      const user = newUsers.find((user) => user.id === authedUser);
 
-      questions = {
-        ...questions,
-        [qId]: {
-          ...questions[qId],
-          [answer]: {
-            ...questions[qId][answer],
-            votes: questions[qId][answer].votes.concat([authedUser]),
-          },
-        },
-      };
+      if (user) {
+        user.answers[qId] = answer;
+      }
+
+      users = newUsers;
+
+      const newQuestions = questions.slice();
+      const question = newQuestions.find((question) => question.id === qId);
+
+      if (question) {
+        question[answer].votes.push(authedUser);
+      }
+
+      questions = newQuestions;
 
       res({ users, questions });
     }, 500);

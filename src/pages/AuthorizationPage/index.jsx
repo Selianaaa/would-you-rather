@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
@@ -7,19 +7,32 @@ import { Preloader } from '../../components';
 import { usersActions } from '../../store';
 import './index.scss';
 
-const _AuthorizationPage = ({ users, usersRequest, userIsLogged, login }) => {
+const _AuthorizationPage = ({
+  users,
+  usersRequest,
+  userIsLogged,
+  setLoggedUser,
+}) => {
   const [userName, setUserName] = useState('');
 
   const loginUser = (name) => {
     const userData = users.find((user) => user.name === name);
+
+    console.log(name, users);
 
     if (!userData) {
       setUserName('');
       return alert('User not found');
     }
 
-    return login(userData);
+    return setLoggedUser(userData);
   };
+
+  useEffect(() => {
+    if (users.length > 0) {
+      setUserName(users[0].name);
+    }
+  }, [users]);
 
   if (usersRequest) {
     return <Preloader />;
