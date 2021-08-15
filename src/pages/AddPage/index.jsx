@@ -9,7 +9,14 @@ const _AddPage = ({ userLogged }) => {
     return <Redirect to={'/authorization'} />;
   }
 
-  return <Fragment>Add page</Fragment>;
+  return (
+    <div className="add_page">
+      <div className="add_page__title">Create a New Question</div>
+      <div className="add_page__card">
+        <div>Would you rather..</div>
+      </div>
+    </div>
+  );
 };
 
 const mapStateToProps = ({ users }) => ({ userLogged: users.logged });

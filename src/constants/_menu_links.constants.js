@@ -5,7 +5,7 @@ export const menuLinks = [
   },
   {
     route: '/add',
-    title: 'New Pool',
+    title: 'New Question',
   },
   {
     route: '/leaderboard',

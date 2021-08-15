@@ -24,7 +24,7 @@
     border: 2px dashed primaryColor('dark');
     background: primaryColor('light');
     padding: 20px;
-    @include baseRow;
+    @include baseColumn;
     justify-content: space-between;
     box-shadow: 5px 5px 9px 0px rgba(99, 69, 50, 0.4);
 

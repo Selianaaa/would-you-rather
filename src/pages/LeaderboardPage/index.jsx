@@ -2,7 +2,7 @@ import React, { Fragment, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import johndoeAvatar from '../../assets/avatars/sarahedo.png';
+import { CardFragment } from './fragments';
 import { Preloader } from '../../components';
 import './index.scss';
 
@@ -46,36 +46,12 @@ const _LeaderboardPage = ({
     return <Redirect to={'/authorization'} />;
   }
 
-  console.log(bestUsers);
   return (
     <div className="leaderboard_page">
       <div className="leaderboard_page__title">Leader Board</div>
       <div className="leaderboard_page__content">
         {bestUsers.map((user, index) => (
-          <div className="leaderboard_page__card" key={user.id}>
-            <div className="leaderboard_page__user">
-              <div className="leaderboard_page__user__name">{user.name}</div>
-              <div
-                className="leaderboard_page__user__avatar"
-                style={{
-                  // backgroundImage: `url(${user.avatarURL})`,
-                  backgroundImage: `url(${johndoeAvatar})`,
-                }}
-              ></div>
-            </div>
-            {Object.entries(user.stats).map(([key, value]) => (
-              <div className="leaderboard_page__stat" key={key}>
-                <div className="leaderboard_page__stat__title">{`${key
-                  .charAt(0)
-                  .toUpperCase()}${key.slice(1)}`}</div>
-                <div className="leaderboard_page__stat__value">{value}</div>
-              </div>
-            ))}
-            <div className="leaderboard_page__score">
-              <p>{`#${index + 1}`}</p>
-              {/* <p>{`#${place}`}</p> */}
-            </div>
-          </div>
+          <CardFragment key={user.id} user={user} place={index + 1} />
         ))}
       </div>
     </div>
