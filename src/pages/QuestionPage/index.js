@@ -21,16 +21,14 @@ const _QuestionPage = ({
 
       if (pageQuestion) {
         setQuestion(pageQuestion);
+      } else {
+        <Redirect to={'/not_found'} />;
       }
     }
   }, [questions, id]);
 
   if (!userLogged) {
     return <Redirect to={'/authorization'} />;
-  }
-
-  if (!question) {
-    return <Redirect to={'/not_found'} />;
   }
 
   if (usersRequest || questionRequest) {
