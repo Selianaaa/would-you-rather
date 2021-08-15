@@ -21,8 +21,6 @@ const _QuestionPage = ({
 
       if (pageQuestion) {
         setQuestion(pageQuestion);
-      } else {
-        <Redirect to={'/not_found'} />;
       }
     }
   }, [questions, id]);

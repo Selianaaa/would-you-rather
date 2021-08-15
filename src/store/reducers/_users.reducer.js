@@ -5,8 +5,8 @@ const initialState = {
   users: [],
   users_request: false,
 
-  logged_user: JSON.parse(localStorage.getItem('loggedUser')) || null,
-  logged: JSON.parse(localStorage.getItem('logged')) || false,
+  logged_user: null,
+  logged: false,
 
   saving_answer: false,
 };
