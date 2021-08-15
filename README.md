@@ -24,7 +24,6 @@ $ yarn start
 $ yarn build
 ```
 
-<!--
 ## Demo
 
-Check the project [here](https://seliana-travel-app.netlify.app). -->
+Check the project [here](https://seliana-would-you-rather.netlify.app).

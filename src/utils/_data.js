@@ -3,7 +3,7 @@ let users = [
     id: 'sarahedo',
     name: 'Sarah Edo',
     avatarURL:
-      'https://tieuviemtonu.com/Data/images/khach-hang/icons-circle-women.png',
+      'https://w7.pngwing.com/pngs/510/349/png-transparent-computer-icons-teacher-avatar-miscellaneous-child-heroes-thumbnail.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -16,7 +16,7 @@ let users = [
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
     avatarURL:
-      'https://w7.pngwing.com/pngs/229/332/png-transparent-riddarens-vårdcentral-computer-icons-avatar-user-computer-software-others-computer-network-angle-orange-thumbnail.png',
+      'https://sun6-23.userapi.com/s/v1/ig1/jgJChoUwkgOV159CjwE0LVYoccA0z7hVA0MraX5IGkX8d8SUEw6n3M1ZlksiC0iEFmpAGoeq.jpg?size=400x0&quality=96&crop=0,0,1024,1024&ava=1',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -27,7 +27,8 @@ let users = [
     id: 'johndoe',
     name: 'John Doe',
     avatarURL:
-      'https://sun6-23.userapi.com/s/v1/ig1/jgJChoUwkgOV159CjwE0LVYoccA0z7hVA0MraX5IGkX8d8SUEw6n3M1ZlksiC0iEFmpAGoeq.jpg?size=400x0&quality=96&crop=0,0,1024,1024&ava=1',
+      'https://w7.pngwing.com/pngs/229/332/png-transparent-riddarens-vårdcentral-computer-icons-avatar-user-computer-software-others-computer-network-angle-orange-thumbnail.png',
+
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',
