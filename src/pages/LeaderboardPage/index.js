@@ -1,17 +1,11 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import { CardFragment } from './fragments';
 import { Preloader } from '../../components';
 import './index.scss';
 
-const _LeaderboardPage = ({
-  userLogged,
-  users,
-  usersRequest,
-  questionRequest,
-}) => {
+const _LeaderboardPage = ({ users, usersRequest, questionRequest }) => {
   const bestUsers = useMemo(() => {
     const bestUsers = [];
 
@@ -42,10 +36,6 @@ const _LeaderboardPage = ({
     return <Preloader />;
   }
 
-  if (!userLogged) {
-    return <Redirect to={'/authorization'} />;
-  }
-
   return (
     <div className="leaderboard_page">
       <div className="leaderboard_page__title">Leader Board</div>
@@ -59,7 +49,6 @@ const _LeaderboardPage = ({
 };
 
 const mapStateToProps = ({ users }) => ({
-  userLogged: users.logged,
   users: users.users,
   usersRequest: users.users_request,
 });

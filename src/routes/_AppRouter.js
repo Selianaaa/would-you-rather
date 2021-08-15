@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { Preloader, Navbar } from '../components';
 
@@ -12,25 +13,36 @@ const AuthorizationPage = React.lazy(() =>
 );
 const NotFoundPage = React.lazy(() => import('../pages/NotFoundPage'));
 
-export const AppRouter = () => {
+const _AppRouter = ({ userLogged }) => {
   return (
     <Router>
       <div className="page">
         <Navbar />
-
         <div className="content">
           <Suspense fallback={<Preloader />}>
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/leaderboard" component={LeaderboardPage} />
-              <Route path="/questions/:id" component={QuestionPage} />
-              <Route path="/add" component={AddPage} />
-              <Route path="/authorization" component={AuthorizationPage} />
-              <Route path="*" component={NotFoundPage} />
-            </Switch>
+            {!userLogged ? (
+              <AuthorizationPage />
+            ) : (
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route path="/leaderboard" component={LeaderboardPage} />
+                <Route path="/questions/:id" component={QuestionPage} />
+                <Route path="/add" component={AddPage} />
+                <Route path="/authorization" component={AuthorizationPage} />
+                <Route path="*" component={NotFoundPage} />
+              </Switch>
+            )}
           </Suspense>
         </div>
       </div>
     </Router>
   );
 };
+
+const mapStateToProps = ({ users }) => ({
+  userLogged: users.logged,
+});
+
+const AppRouter = connect(mapStateToProps, null)(_AppRouter);
+
+export default AppRouter;

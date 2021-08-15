@@ -1,5 +1,4 @@
 import { usersConstants } from '../../constants';
-import { LSActions } from '../../helpers';
 
 const initialState = {
   users: [],
@@ -7,7 +6,6 @@ const initialState = {
 
   logged_user: null,
   logged: false,
-
   saving_answer: false,
 };
 
@@ -27,9 +25,6 @@ export const usersReducer = function (
         users_request: payload,
       };
     case usersConstants.SET_LOGGED_USER:
-      LSActions.saveByKey('loggedUser', payload);
-      LSActions.saveByKey('logged', true);
-
       return {
         ...state,
         logged_user: payload,
@@ -37,9 +32,6 @@ export const usersReducer = function (
       };
 
     case usersConstants.LOGOUT_USER:
-      LSActions.saveByKey('loggedUser', null);
-      LSActions.saveByKey('logged', false);
-
       return {
         ...state,
         logged_user: null,

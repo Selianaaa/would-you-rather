@@ -1,20 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import { questionsActions } from '../../store';
 import { Preloader } from '../../components';
 import './index.scss';
 
-const _AddPage = ({ userLogged, addingQuestion, addQuestion, loggedUser }) => {
+const _AddPage = ({ addingQuestion, addQuestion, loggedUser }) => {
   const history = useHistory();
   const [optionOne, setOptionOne] = useState('');
   const [optionTwo, setOptionTwo] = useState('');
-
-  if (!userLogged) {
-    return <Redirect to={'/authorization'} />;
-  }
 
   return (
     <div className="add_page">
@@ -61,7 +57,6 @@ const _AddPage = ({ userLogged, addingQuestion, addQuestion, loggedUser }) => {
 };
 
 const mapStateToProps = ({ users, questions }) => ({
-  userLogged: users.logged,
   loggedUser: users.logged_user,
 
   addingQuestion: questions.adding_question,

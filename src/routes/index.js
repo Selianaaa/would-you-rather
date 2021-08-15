@@ -1,1 +1,1 @@
-export * from './_AppRouter';
+export { default as AppRouter } from './_AppRouter';

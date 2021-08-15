@@ -3,7 +3,6 @@ import { questionsConstants } from '../../constants';
 const initialState = {
   questions: [],
   questions_request: false,
-
   adding_question: false,
 };
 

@@ -1,17 +1,10 @@
 import React, { useState, useMemo, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import { QuestionCard, Preloader } from '../../components';
 import './index.scss';
 
-const _HomePage = ({
-  userLogged,
-  userData,
-  questions,
-  usersRequest,
-  questionRequest,
-}) => {
+const _HomePage = ({ userData, questions, usersRequest, questionRequest }) => {
   const dashboardTabs = useMemo(() => {
     const tabs = [
       {
@@ -50,10 +43,6 @@ const _HomePage = ({
       setTab(dashboardTabs[0]);
     }
   }, [questions, userData, dashboardTabs]);
-
-  if (!userLogged) {
-    return <Redirect to={'/authorization'} />;
-  }
 
   if (usersRequest || questionRequest) {
     return <Preloader />;
@@ -100,7 +89,6 @@ const _HomePage = ({
 };
 
 const mapStateToProps = ({ users, questions }) => ({
-  userLogged: users.logged,
   userData: users.logged_user,
   usersRequest: users.users_request,
 

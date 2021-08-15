@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { QuestionCard, Preloader } from '../../components';
 import './index.scss';
 
-const _QuestionPage = ({
-  userLogged,
-  questions,
-  usersRequest,
-  questionRequest,
-}) => {
+const _QuestionPage = ({ questions, usersRequest, questionRequest }) => {
   const { id } = useParams();
+  const history = useHistory();
 
   const [question, setQuestion] = useState(null);
 
@@ -19,15 +15,13 @@ const _QuestionPage = ({
     if (questions.length > 0) {
       const pageQuestion = questions.find((question) => question.id === id);
 
-      if (pageQuestion) {
-        setQuestion(pageQuestion);
+      if (!pageQuestion) {
+        return history.push('/not_found');
       }
+
+      setQuestion(pageQuestion);
     }
   }, [questions, id]);
-
-  if (!userLogged) {
-    return <Redirect to={'/authorization'} />;
-  }
 
   if (usersRequest || questionRequest) {
     return <Preloader />;
@@ -43,7 +37,6 @@ const _QuestionPage = ({
 };
 
 const mapStateToProps = ({ users, questions }) => ({
-  userLogged: users.logged,
   usersRequest: users.users_request,
 
   questions: questions.questions,
