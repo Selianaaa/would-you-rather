@@ -1,0 +1,49 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.not_found_page {
+  position: relative;
+  @include baseColumn(center);
+  align-self: center;
+
+  &__title {
+    @include baseText(30px);
+    align-self: center;
+  }
+
+  &__error {
+    position: relative;
+    margin-top: 20px;
+    @include baseText(55px);
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    @include baseText(25px, 700);
+    color: secondaryColor('light');
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: '';
+      left: -25px;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      transform: rotateZ(-45deg);
+      border-top: 3px solid secondaryColor('light');
+      border-left: 3px solid secondaryColor('light');
+    }
+
+    &:hover {
+      color: secondaryColor('dark');
+
+      &::before {
+        border-color: secondaryColor('dark');
+      }
+    }
+  }
+}
