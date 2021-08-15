@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -27,13 +27,17 @@ const _HomePage = ({
     if (userData && questions.length > 0) {
       const userAnswers = Object.keys(userData.answers);
 
-      tabs[0].questions = questions.filter((question) =>
-        userAnswers.includes(question.id)
-      );
+      tabs[0].questions = questions
+        .filter((question) => userAnswers.includes(question.id))
+        .sort((a, b) => {
+          return b.timestamp - a.timestamp;
+        });
 
-      tabs[1].questions = questions.filter(
-        (question) => !userAnswers.includes(question.id)
-      );
+      tabs[1].questions = questions
+        .filter((question) => !userAnswers.includes(question.id))
+        .sort((a, b) => {
+          return b.timestamp - a.timestamp;
+        });
     }
 
     return tabs;
@@ -72,14 +76,24 @@ const _HomePage = ({
         ))}
       </div>
       <div className="home_page__questions">
-        {tab.questions.map((question) => (
-          <QuestionCard
-            key={question.id}
-            className="home_page__question_card"
-            question={question}
-            mode="preview"
-          />
-        ))}
+        {tab.questions.length > 0 ? (
+          <Fragment>
+            {tab.questions.map((question) => (
+              <QuestionCard
+                key={question.id}
+                className="home_page__question_card"
+                question={question}
+                mode="preview"
+              />
+            ))}
+          </Fragment>
+        ) : (
+          <div className="home_page__questions__empty">
+            {tab.title === 'Answered'
+              ? "You don't have any answered question"
+              : "You've answered all the questions"}
+          </div>
+        )}
       </div>
     </div>
   );

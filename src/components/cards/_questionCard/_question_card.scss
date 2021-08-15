@@ -10,6 +10,7 @@
   background: primaryColor('light');
   padding: 20px;
   @include baseRow;
+  box-shadow: 5px 5px 9px 0px rgba(99, 69, 50, 0.4);
 
   @include mobileScreen {
     width: 90vw;
@@ -28,9 +29,6 @@
     @include mobileScreen {
       flex-direction: row-reverse;
       justify-content: center;
-    }
-
-    @include mobileScreen {
       width: 100%;
       border-right: none;
       margin-bottom: 20px;

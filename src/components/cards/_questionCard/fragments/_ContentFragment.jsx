@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import './_content_fragment.scss';
 
@@ -29,8 +29,6 @@ export const ContentFragment = ({
       <div className="question_card__content__text">{`${possibleAnswers[0].text} or...`}</div>
     );
   }
-
-  console.log(possibleAnswers, loggedUserId);
 
   if (loggedUserAnswered) {
     return (
