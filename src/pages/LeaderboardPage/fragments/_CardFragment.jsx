@@ -19,7 +19,9 @@ export const CardFragment = ({ user, place }) => (
         <div className="leaderboard_card__stat__title">{`${key
           .charAt(0)
           .toUpperCase()}${key.slice(1)}`}</div>
-        <div className="leaderboard_card__stat__value">{value}</div>
+        <div className="leaderboard_card__stat__value">
+          <p>{value}</p>
+        </div>
       </div>
     ))}
 

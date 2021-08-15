@@ -7,7 +7,6 @@ import './index.scss';
 
 const _QuestionPage = ({
   userLogged,
-  userData,
   questions,
   usersRequest,
   questionRequest,
@@ -30,6 +29,10 @@ const _QuestionPage = ({
     return <Redirect to={'/authorization'} />;
   }
 
+  if (!question) {
+    return <Redirect to={'/not_found'} />;
+  }
+
   if (usersRequest || questionRequest) {
     return <Preloader />;
   }
@@ -45,7 +48,6 @@ const _QuestionPage = ({
 
 const mapStateToProps = ({ users, questions }) => ({
   userLogged: users.logged,
-  userData: users.logged_user,
   usersRequest: users.users_request,
 
   questions: questions.questions,

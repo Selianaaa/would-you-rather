@@ -16,7 +16,7 @@ const _LeaderboardPage = ({
     const bestUsers = [];
 
     if (users.length > 0) {
-      users.map((user) => {
+      users.forEach((user) => {
         const answered = Object.keys(user.answers).length;
         const created = user.questions.length;
 

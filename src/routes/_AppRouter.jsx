@@ -12,7 +12,7 @@ const AuthorizationPage = React.lazy(() =>
 );
 const NotFoundPage = React.lazy(() => import('../pages/NotFoundPage'));
 
-export default function () {
+export const AppRouter = () => {
   return (
     <Router>
       <div className="page">
@@ -33,4 +33,4 @@ export default function () {
       </div>
     </Router>
   );
-}
+};

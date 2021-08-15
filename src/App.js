@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     dispatch(appActions.startApp());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

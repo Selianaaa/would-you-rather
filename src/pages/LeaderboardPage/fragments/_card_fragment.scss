@@ -79,6 +79,14 @@
 
     &__value {
       margin-top: 10px;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: secondaryColor('dark');
+      color: white;
+      @include baseText(18px);
+      @include baseRow;
     }
   }
 
