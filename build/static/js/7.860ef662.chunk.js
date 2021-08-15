@@ -1,0 +1,2 @@
+(this["webpackJsonpwould-you-rather"]=this["webpackJsonpwould-you-rather"]||[]).push([[7],{52:function(e,t,a){},57:function(e,t,a){"use strict";a.r(t);a(0);var n=a(8),o=(a(52),a(1));t.default=()=>Object(o.jsxs)("div",{className:"not_found_page",children:[Object(o.jsx)("div",{className:"not_found_page__title",children:"Page Not Found"}),Object(o.jsx)("div",{className:"not_found_page__error",children:"404"}),Object(o.jsx)(n.b,{to:"/",className:"not_found_page__link",children:"Back to the main page"})]})}}]);
+//# sourceMappingURL=7.860ef662.chunk.js.map

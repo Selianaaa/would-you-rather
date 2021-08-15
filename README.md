@@ -23,3 +23,8 @@ $ yarn start
 ```
 $ yarn build
 ```
+
+<!--
+## Demo
+
+Check the project [here](https://seliana-travel-app.netlify.app). -->
