@@ -1,5 +1,6 @@
+import { usersActions } from '../actions';
 import { questionsConstants } from '../../constants';
-import { _getQuestions, _saveQuestionAnswer } from '../../utils';
+import { _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../../utils';
 
 /**
  * Setting questions request condition
@@ -70,10 +71,42 @@ export const saveQuestionAnswer = (questionId, answerOption, userId) => {
   };
 };
 
-// export function saveQuestionAnswer(authUser, qid, answer) {
-//   return _saveQuestionAnswer({ authUser, qid, answer });
-// }
+/**
+ * Adding questions request condition
+ * @param {boolean} inRequest - request condition
+ */
+const setAddingQuestion = (inRequest) => ({
+  type: questionsConstants.SET_ADDING_QUESTION,
+  payload: inRequest,
+});
 
-// export function saveQuestion(question) {
-//   return _saveQuestion(question);
-// }
+/**
+ * Add new question
+ */
+export const addQuestion = (options, userId, history) => {
+  return async (dispatch, getState) => {
+    const { questions } = getState().questions;
+
+    dispatch(setAddingQuestion(true));
+
+    try {
+      const question = await _saveQuestion({
+        optionOne: options.optionOne,
+        optionTwo: options.optionTwo,
+        author: userId,
+      });
+
+      const newQuestions = questions.slice();
+      newQuestions.push(question);
+
+      dispatch(setQuestions(newQuestions));
+      dispatch(usersActions.saveUserQuestion(question.id));
+
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+
+    dispatch(setAddingQuestion(false));
+  };
+};

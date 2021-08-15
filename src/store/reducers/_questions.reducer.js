@@ -3,6 +3,8 @@ import { questionsConstants } from '../../constants';
 const initialState = {
   questions: [],
   questions_request: false,
+
+  adding_question: false,
 };
 
 export const questionsReducer = function (
@@ -22,6 +24,12 @@ export const questionsReducer = function (
         ...state,
         questions_request: payload,
       };
+    case questionsConstants.SET_ADDING_QUESTION:
+      return {
+        ...state,
+        adding_question: payload,
+      };
+
     default:
       return state;
   }

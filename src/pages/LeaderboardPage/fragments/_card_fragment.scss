@@ -1,14 +1,97 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
-.header {
+.leaderboard_card {
   position: relative;
-  padding: 15px 0;
-  height: 70px;
-  background: primaryColor('dark');
-  text-align: center;
-}
+  width: 500px;
+  min-height: 200px;
+  border-radius: 5px;
+  border: 2px dashed primaryColor('dark');
+  background: primaryColor('light');
+  padding: 20px;
+  @include baseRow;
+  justify-content: space-between;
+  box-shadow: 5px 5px 9px 0px rgba(99, 69, 50, 0.4);
 
-.title {
-  font-weight: 700;
-  color: white;
+  @include mobileScreen {
+    width: 90vw;
+    flex-direction: column;
+  }
+
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  &__user {
+    position: relative;
+    width: 200px;
+    height: 100%;
+    padding: 20px 15px 10px 10px;
+    border-right: 1px solid primaryColor('dark');
+    @include baseColumn;
+
+    @include mobileScreen {
+      flex-direction: row-reverse;
+      justify-content: center;
+      width: 100%;
+      border-right: none;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid primaryColor('dark');
+    }
+
+    &__name {
+      @include baseText(16px, 600);
+
+      @include mobileScreen {
+        font-size: 17px;
+      }
+    }
+
+    &__avatar {
+      position: relative;
+      margin-top: 20px;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: 40% 40%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      border: 2px solid white;
+
+      @include mobileScreen {
+        width: 50px;
+        height: 50px;
+        margin-top: 0;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__stat {
+    position: relative;
+    padding: 20px;
+    @include baseColumn;
+
+    &__title {
+      @include baseText(18px);
+    }
+
+    &__value {
+      margin-top: 10px;
+    }
+  }
+
+  &__score {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: primaryColor('dark');
+    @include baseRow;
+    color: white;
+    @include baseText(22px);
+  }
 }

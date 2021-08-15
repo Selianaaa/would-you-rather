@@ -154,21 +154,17 @@ function formatQuestion({ optionOne, optionTwo, author }) {
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
+    console.log('_saveQuestion', question);
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
-      questions = {
-        ...questions,
-        [formattedQuestion.id]: formattedQuestion,
-      };
-
       const newQuestions = questions.slice();
       newQuestions.push(formattedQuestion);
       questions = newQuestions;
 
       const newUsers = users.slice();
-      const user = newUsers.find((user) => user.id === authedUser.id);
+      const user = newUsers.find((user) => user.id === authedUser);
 
       if (user) {
         user.questions.push(formattedQuestion.id);
@@ -183,7 +179,6 @@ export function _saveQuestion(question) {
 
 export function _saveQuestionAnswer({ authedUser, qId, answer }) {
   return new Promise((res, rej) => {
-    console.log('_saveQuestionAnswer', authedUser, qId, answer);
     setTimeout(() => {
       const newUsers = users.slice();
       const user = newUsers.find((user) => user.id === authedUser);

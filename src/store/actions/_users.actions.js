@@ -1,5 +1,5 @@
 import { usersConstants } from '../../constants';
-import { _getUsers, _saveQuestionAnswer } from '../../utils';
+import { _getUsers } from '../../utils';
 import { questionsActions } from '../actions';
 
 /**
@@ -105,5 +105,23 @@ export const saveUserAnswer = (questionId, answerOption) => {
     );
 
     dispatch(setSavingAnswer(false));
+  };
+};
+
+/**
+ * Save user question
+ */
+export const saveUserQuestion = (questionId) => {
+  return async (dispatch, getState) => {
+    const { logged_user: loggedUser } = getState().users;
+
+    const newUserData = {
+      ...loggedUser,
+      questions: loggedUser.questions.concat(questionId),
+    };
+
+    console.log(newUserData);
+
+    dispatch(setLoggedUser(newUserData));
   };
 };

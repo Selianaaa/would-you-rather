@@ -15,11 +15,11 @@ const _HomePage = ({
   const dashboardTabs = useMemo(() => {
     const tabs = [
       {
-        title: 'Answered',
+        title: 'Unanswered',
         questions: [],
       },
       {
-        title: 'Unanswered',
+        title: 'Answered',
         questions: [],
       },
     ];
@@ -28,13 +28,13 @@ const _HomePage = ({
       const userAnswers = Object.keys(userData.answers);
 
       tabs[0].questions = questions
-        .filter((question) => userAnswers.includes(question.id))
+        .filter((question) => !userAnswers.includes(question.id))
         .sort((a, b) => {
           return b.timestamp - a.timestamp;
         });
 
       tabs[1].questions = questions
-        .filter((question) => !userAnswers.includes(question.id))
+        .filter((question) => userAnswers.includes(question.id))
         .sort((a, b) => {
           return b.timestamp - a.timestamp;
         });
