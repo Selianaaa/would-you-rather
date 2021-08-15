@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import { usersActions } from '../../../store';
 import { ContentFragment, ButtonFragment } from './fragments';
-import johndoeAvatar from '../../../assets/avatars/sarahedo.png';
 import './_question_card.scss';
 
 const _QuestionCard = ({
@@ -48,8 +47,7 @@ const _QuestionCard = ({
           <div
             className="question_card__author__avatar"
             style={{
-              // backgroundImage: `url(${questionAuthor.avatarURL})`,
-              backgroundImage: `url(${johndoeAvatar})`,
+              backgroundImage: `url(${questionAuthor.avatarURL})`,
             }}
           ></div>
         </div>
@@ -70,7 +68,6 @@ const _QuestionCard = ({
           mode={mode}
           loggedUserAnswered={loggedUserAnswered()}
           selectedAnswer={selectedAnswer}
-          // handleSubmit={() => console.log(id, selectedAnswer)}
           handleSubmit={() => saveUserAnswer(id, selectedAnswer.id)}
           questionId={id}
         />
@@ -78,7 +75,6 @@ const _QuestionCard = ({
     </div>
   );
 };
-// saveUserAnswer
 
 const mapStateToProps = ({ users }) => ({
   users: users.users,

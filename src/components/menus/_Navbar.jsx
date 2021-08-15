@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavLink, Link } from 'react-router-dom';
 
-import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { SideMenu } from './_SideMenu';
 import { MenuUser } from './_MenuUser';
 import { menuLinks } from '../../constants';
@@ -45,8 +44,7 @@ const _Navbar = ({ loggedUser, userIsLogged }) => {
         <MenuUser
           isButton
           clickHandler={() => setOpened(true)}
-          name={loggedUser.name}
-          avatar={johndoeAvatar}
+          loggedUser={loggedUser}
           style={{ marginLeft: '30px' }}
         />
       )}

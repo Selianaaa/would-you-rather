@@ -1,6 +1,5 @@
 import React from 'react';
 
-import johndoeAvatar from '../../../assets/avatars/sarahedo.png';
 import './_card_fragment.scss';
 
 export const CardFragment = ({ user, place }) => (
@@ -10,8 +9,7 @@ export const CardFragment = ({ user, place }) => (
       <div
         className="leaderboard_card__user__avatar"
         style={{
-          // backgroundImage: `url(${user.avatarURL})`,
-          backgroundImage: `url(${johndoeAvatar})`,
+          backgroundImage: `url(${user.avatarURL})`,
         }}
       ></div>
     </div>

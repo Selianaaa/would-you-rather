@@ -13,7 +13,6 @@ export const questionsReducer = function (
 ) {
   switch (type) {
     case questionsConstants.SET_QUESTIONS:
-      console.log('SET_QUESTIONS', payload);
       return {
         ...state,
         questions: payload,

@@ -18,8 +18,6 @@ const _AuthorizationPage = ({
   const loginUser = (name) => {
     const userData = users.find((user) => user.name === name);
 
-    console.log(name, users);
-
     if (!userData) {
       setUserName('');
       return alert('User not found');

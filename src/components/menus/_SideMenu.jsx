@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavLink, useHistory } from 'react-router-dom';
 
-import johndoeAvatar from '../../assets/avatars/sarahedo.png';
 import { usersActions } from '../../store';
 import { MenuUser } from './_MenuUser';
 import { menuLinks } from '../../constants';
@@ -17,11 +16,7 @@ const _SideMenu = ({ loggedUser, closeMenu, logout }) => {
   return (
     <div className="side_menu">
       <div className="side_menu__close_btn" onClick={closeMenu}></div>
-      <MenuUser
-        name={loggedUser.name}
-        avatar={johndoeAvatar}
-        style={{ marginTop: '30px' }}
-      />
+      <MenuUser loggedUser={loggedUser} style={{ marginTop: '30px' }} />
 
       {menuLinks.map((link) => (
         <NavLink

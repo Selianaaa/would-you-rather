@@ -1,10 +1,9 @@
-// import johndoeAvatar from '../assets/avatars/sarahedo.png';
-
 let users = [
   {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: '../assets/avatars/sarahedo.png',
+    avatarURL:
+      'https://tieuviemtonu.com/Data/images/khach-hang/icons-circle-women.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -16,7 +15,8 @@ let users = [
   {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: '../assets/avatars/tylermcginnis.png',
+    avatarURL:
+      'https://w7.pngwing.com/pngs/229/332/png-transparent-riddarens-vårdcentral-computer-icons-avatar-user-computer-software-others-computer-network-angle-orange-thumbnail.png',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -26,7 +26,8 @@ let users = [
   {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: '../assets/avatars/johndoe.png',
+    avatarURL:
+      'https://sun6-23.userapi.com/s/v1/ig1/jgJChoUwkgOV159CjwE0LVYoccA0z7hVA0MraX5IGkX8d8SUEw6n3M1ZlksiC0iEFmpAGoeq.jpg?size=400x0&quality=96&crop=0,0,1024,1024&ava=1',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',
@@ -154,7 +155,6 @@ function formatQuestion({ optionOne, optionTwo, author }) {
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
-    console.log('_saveQuestion', question);
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
 

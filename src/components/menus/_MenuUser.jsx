@@ -5,8 +5,7 @@ import './_menu_user.scss';
 export const MenuUser = ({
   isButton = false,
   clickHandler,
-  name,
-  avatar,
+  loggedUser,
   ...otherProps
 }) => {
   const userCard = (
@@ -14,10 +13,10 @@ export const MenuUser = ({
       <div
         className="menu_user__avatar"
         style={{
-          backgroundImage: `url(${avatar})`,
+          backgroundImage: `url(${loggedUser.avatarURL})`,
         }}
       ></div>
-      <div className="menu_user__name">{name}</div>
+      <div className="menu_user__name">{loggedUser.name}</div>
     </Fragment>
   );
 

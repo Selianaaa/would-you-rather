@@ -17,8 +17,6 @@ export const usersReducer = function (
 ) {
   switch (type) {
     case usersConstants.SET_USERS:
-      console.log('SET_USERS', payload);
-
       return {
         ...state,
         users: payload,
@@ -29,8 +27,6 @@ export const usersReducer = function (
         users_request: payload,
       };
     case usersConstants.SET_LOGGED_USER:
-      console.log('SET_LOGGED_USER', payload);
-
       LSActions.saveByKey('loggedUser', payload);
       LSActions.saveByKey('logged', true);
 
