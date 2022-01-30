@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { QuestionCard, Preloader } from '../../components';
 import './index.scss';
 
-const _HomePage = ({ userData, questions, usersRequest, questionRequest }) => {
+const _HomePage = ({ userData, questions, usersRequest, questionsRequest }) => {
   const dashboardTabs = useMemo(() => {
     const tabs = [
       {
@@ -44,7 +44,7 @@ const _HomePage = ({ userData, questions, usersRequest, questionRequest }) => {
     }
   }, [questions, userData, dashboardTabs]);
 
-  if (usersRequest || questionRequest) {
+  if (usersRequest || questionsRequest) {
     return <Preloader />;
   }
 
@@ -93,7 +93,7 @@ const mapStateToProps = ({ users, questions }) => ({
   usersRequest: users.users_request,
 
   questions: questions.questions,
-  questionRequest: questions.questions_request,
+  questionsRequest: questions.questions_request,
 });
 
 const HomePage = connect(mapStateToProps, null)(_HomePage);
