@@ -2,8 +2,7 @@ let users = [
   {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL:
-      'https://w7.pngwing.com/pngs/510/349/png-transparent-computer-icons-teacher-avatar-miscellaneous-child-heroes-thumbnail.png',
+    avatarURL: 'https://dezmoscow.ru/wp-content/uploads/2021/02/women.png',
     answers: {
       '8xf0y6ziyjabvozdd253nd': 'optionOne',
       '6ni6ok3ym7mf1p33lnez': 'optionTwo',

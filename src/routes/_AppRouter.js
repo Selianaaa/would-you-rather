@@ -25,10 +25,14 @@ const _AppRouter = ({ userLogged }) => {
             ) : (
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route path="/leaderboard" component={LeaderboardPage} />
-                <Route path="/questions/:id" component={QuestionPage} />
-                <Route path="/add" component={AddPage} />
-                <Route path="/authorization" component={AuthorizationPage} />
+                <Route exact path="/leaderboard" component={LeaderboardPage} />
+                <Route exact path="/questions/:id" component={QuestionPage} />
+                <Route exact path="/add" component={AddPage} />
+                <Route
+                  exact
+                  path="/authorization"
+                  component={AuthorizationPage}
+                />
                 <Route path="*" component={NotFoundPage} />
               </Switch>
             )}
