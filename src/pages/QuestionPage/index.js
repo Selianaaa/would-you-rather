@@ -13,7 +13,6 @@ const _QuestionPage = ({ questions, usersRequest, questionRequest }) => {
 
   useEffect(() => {
     if (questions.length > 0) {
-      console.log(questions, id);
       const pageQuestion = questions.find((question) => question.id === id);
 
       if (!pageQuestion) {
